@@ -11,7 +11,7 @@ function nav(ll,name,mode){var n=encodeURIComponent(name),g=w2g(ll[1],ll[0]);
  '<a class="bd" target="_blank" rel="noopener" href="https://api.map.baidu.com/marker?location='+ll[0].toFixed(6)+','+ll[1].toFixed(6)+'&title='+n+'&content='+n+'&output=html&coord_type=wgs84&src=webapp.frz.zhairshow">百度地图</a></div>';}
 function llOf(k){var p=POI[k];return D.P[p.p||k]||D.P[k];}
 
-var map=L.map('map',{zoomControl:true}).setView([23.5,114.2],7);
+var map=L.map('map',{zoomControl:true}).setView([22.6,113.45],9);
 var OSM=L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>'});
 var ESRI=L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}',{maxZoom:19,attribution:'Tiles &copy; Esri'});
 var SAT=L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxZoom:19,attribution:'Tiles &copy; Esri'});
@@ -19,8 +19,8 @@ var SAT=L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_
 L.control.layers({'标准地图（OSM）':OSM,'街道图（Esri）':ESRI,'卫星影像（Esri）':SAT},null,{position:'topright'}).addTo(map);
 L.control.scale({imperial:false}).addTo(map);
 
-var G={all:L.layerGroup(),'12':L.layerGroup(),'13':L.layerGroup(),'14':L.layerGroup(),stay:L.layerGroup()};
-var BND={all:L.latLngBounds([]),'12':L.latLngBounds([]),'13':L.latLngBounds([]),'14':L.latLngBounds([]),stay:L.latLngBounds([])};
+var G={all:L.layerGroup(),'12':L.layerGroup(),'13':L.layerGroup(),stay:L.layerGroup()};
+var BND={all:L.latLngBounds([]),'12':L.latLngBounds([]),'13':L.latLngBounds([]),stay:L.latLngBounds([])};
 
 function pinIcon(p,c){var big=p.kind==='venue'?' big':'';
  return L.divIcon({className:'',html:'<div class="pin'+big+(p.kind==='ref'?' ref':'')+(p.kind==='hotel'?' hotel':'')+'" style="background:'+c+'">'+esc(p.num)+'</div>',iconSize:[30,30],iconAnchor:[15,15],popupAnchor:[0,-12]});}
@@ -45,19 +45,17 @@ Object.keys(POI).forEach(function(k){var p=POI[k],ll=llOf(k);if(!ll)return;
  m.bindTooltip(p.n,{direction:'top',offset:[0,-14]});
  PM[k]=m;
  var days=[p.day];
- if(k==='gzs')days=['12','13','14'];
- if(k==='zhs')days=['12','13','stay'];
- if(k==='can')days=['12','14'];
- if(k==='hgh')days=['12','14'];
+ if(k==='gzs')days=['12','13'];
+ if(k==='zhs')days=['12','13'];
  days.forEach(function(d){
-  if(!G[d])return;
+  if(!G[d]||(d==='stay'&&['zhs','changlong','hengqin','airshow'].indexOf(k)>=0))return;
   var mm=L.marker(ll,{icon:pinIcon(p,DAYC[d]||c),zIndexOffset:p.kind==='venue'?1200:900});
   mm.bindPopup(popup(k),{maxWidth:320});mm.bindTooltip(p.n,{direction:'top',offset:[0,-14]});
   mm.addTo(G[d]);BND[d].extend(ll);
   if(d==='stay'||p.kind==='hotel'){/* already */}
  });
  m.addTo(G.all);BND.all.extend(ll);
- if(p.day==='stay'||p.kind==='hotel'){m.addTo(G.stay);BND.stay.extend(ll);}
+ if((p.day==='stay'||p.kind==='hotel')&&['zhs','changlong','hengqin','airshow','gzstay'].indexOf(k)<0){m.addTo(G.stay);BND.stay.extend(ll);}
 });
 /* hotel-rank targets on stay filter (incl. 金湾=航展附近) */
 ['zhs','changlong','hengqin','airshow'].forEach(function(k){
@@ -73,41 +71,34 @@ function addRoute(key,color,dash,weight,groups){
  groups.forEach(function(g){var copy=L.polyline(r.g,{color:color,weight:weight||5,opacity:.85,dashArray:dash||null}).bindTooltip(r.note,{sticky:true});copy.addTo(G[g]);BND[g].extend(copy.getBounds());});
  pl.addTo(G.all);BND.all.extend(pl.getBounds());
 }
-addRoute('d12_flight',DAYC.flight,'8,10',3,['12']);
 addRoute('d12_train',DAYC['12'],null,5,['12']);
 addRoute('d13_chain',DAYC['13'],null,5,['13']);
 addRoute('d13_walk',DAYC['13'],'2,8',4,['13']);
 addRoute('d13_back','#6A1B9A','10,8',4,['13']);
-addRoute('d14_flight',DAYC['14'],'8,10',3,['14']);
 
 /* ---------- sidebar HTML ---------- */
 function poiRow(k,extra){var p=POI[k];if(!p)return '';
  return '<div class="tli poi" data-poi="'+k+'"><span class="num" style="background:'+(DAYC[p.day]||DAYC.all)+'">'+p.num+'</span><span class="nm">'+esc(p.n)+'</span>'+(extra?'<div class="mt">'+extra+'</div>':'')+(p.tips?'<div class="mt">'+p.tips+'</div>':'')+'</div>';}
 
 function overviewHtml(){
- var h='<div class="card" style="background:#f7f9ff"><b>行程总览</b> · 2 成人 · 杭州出发（飞机）· 不住广州首晚<br>';
- h+='<span style="color:'+DAYC['12']+'">● 12/12</span> HGH → CAN（参考 MU5211）→ 广州南 → 广珠城际 → 珠海站附近住一晚<br>';
+ var h='<div class="card" style="background:#f7f9ff"><b>行程总览</b> · 2 成人 · 广州南出发 · 珠海住 1 晚<br>';
+ h+='<span style="color:'+DAYC['12']+'">● 12/12</span> 广州南 → 广珠城际 → 珠海站附近住一晚<br>';
  h+='<span style="color:'+DAYC['13']+'">● 12/13</span> 珠机城际 → 珠海机场站 3 号口 → 步行约 300 m → 航展中心 · 约 16:00 离场 → 晚回广州<br>';
- h+='<span style="color:'+DAYC['14']+'">● 12/14</span> 广州 → 杭州航班 <span class="tbd">班次待选</span><br>';
  h+='展期 12/7–12/13 · 公众日 12/11–12/13 · 本次观展 <b>12/13</b></div>';
- h+='<div class="card bk" style="--c:'+DAYC['12']+';cursor:pointer" data-go="12"><b style="color:'+DAYC['12']+'">12日抵达</b><br><span class="mt" style="font-size:12.5px;color:#555">萧山 → 白云 → 广州南 → 珠海站</span></div>';
+ h+='<div class="card bk" style="--c:'+DAYC['12']+';cursor:pointer" data-go="12"><b style="color:'+DAYC['12']+'">12日抵达</b><br><span class="mt" style="font-size:12.5px;color:#555">广州南 → 广珠城际 → 珠海站</span></div>';
  h+='<div class="card bk" style="--c:'+DAYC['13']+';cursor:pointer" data-go="13"><b style="color:'+DAYC['13']+'">13日观展</b><br><span class="mt" style="font-size:12.5px;color:#555">珠机城际 → 航展中心 · 半天/全天路线 · 16:00 离场</span></div>';
- h+='<div class="card bk" style="--c:'+DAYC['14']+';cursor:pointer" data-go="14"><b style="color:'+DAYC['14']+'">14日返程</b><br><span class="mt" style="font-size:12.5px;color:#555">广州 → 杭州</span></div>';
  h+='<div class="card bk" style="--c:'+DAYC.stay+';cursor:pointer" data-go="stay"><b style="color:'+DAYC.stay+'">住宿区域</b><br><span class="mt" style="font-size:12.5px;color:#555">珠海站 &gt; 长隆 &gt; 横琴 &gt; 金湾</span></div>';
- h+='<div class="card"><h3>图上怎么走</h3>点左侧天数筛选；点时间轴条目可定位。折线：橙色广珠城际、红色珠机城际+步行、紫色晚间回广州、青色虚线航班示意。</div>';
+ h+='<div class="card"><h3>图上怎么走</h3>点左侧天数筛选；点时间轴条目可定位。折线：橙色广珠城际、红色珠机城际+步行、紫色虚线晚间回广州。</div>';
  h+='<div class="note">'+esc(D.meta.note)+'</div>';
  return h;
 }
 function day12Html(){
- var h='<div class="sep" style="color:'+DAYC['12']+'">12/12 周六 · 出发抵达</div><div class="tl" style="--c:'+DAYC['12']+'">';
- h+='<div class="tli mv"><span class="tm">上午</span><span>杭州萧山起飞 → 广州白云</span><div class="mt">推荐 <b>MU5211</b> 约 ¥450/人 <span class="ref">参考价</span></div></div>';
- h+=poiRow('hgh');
- h+=poiRow('can','出机场转广州南站');
- h+='<div class="tli mv"><span class="tm">午后</span><span>机场 → <b>广州南站</b> → 广珠城际</span></div>';
+ var h='<div class="sep" style="color:'+DAYC['12']+'">12/12 周六 · 广州 → 珠海</div><div class="tl" style="--c:'+DAYC['12']+'">';
+ h+='<div class="tli mv"><span class="tm">出发</span><span>到 <b>广州南站</b> 乘广珠城际</span></div>';
  h+=poiRow('gzs');
  h+=poiRow('zhs','入住珠海（首选本站周边）');
  h+='<div class="tli mv"><span class="tm">晚上</span><span>早休息，备好身份证与大麦电子票</span></div>';
- h+='</div><div class="card"><h3>换乘要点</h3>飞机不自驾。白云到广州南可用地铁/城际/网约车，航展旺季预留延误缓冲。广珠城际票提前买。</div>';
+ h+='</div><div class="card"><h3>换乘要点</h3>广珠城际：广州南 → 珠海站，航展期间票紧张，提前买；到站即可入住珠海站周边。</div>';
  return h;
 }
 function day13Html(){
@@ -124,14 +115,6 @@ function day13Html(){
  h+='<div class="note">飞行具体时段 <span class="tbd">2026 日程待官方公布</span> · 金凤台/莲洲为往届参考，本行程 <span class="tbd">待确认</span></div>';
  return h;
 }
-function day14Html(){
- var h='<div class="sep" style="color:'+DAYC['14']+'">12/14 周一 · 返程</div><div class="tl" style="--c:'+DAYC['14']+'">';
- h+='<div class="tli mv"><span class="tm">白天</span><span>广州市区 → 白云机场 → 杭州</span><div class="mt">航班 <span class="tbd">班次待选</span></div></div>';
- h+=poiRow('can14');
- h+=poiRow('hgh14');
- h+='</div><div class="card"><h3>时间预留</h3>广州市区到白云机场高峰可能较久；值机安检按航司要求提前到达。不要卡太紧。</div>';
- return h;
-}
 function stayHtml(){
  var h='<div class="sep" style="color:'+DAYC.stay+'">12/12 珠海住一晚 · 区域优先级</div><div class="tl" style="--c:'+DAYC.stay+'">';
  HOTELS.forEach(function(x){
@@ -143,24 +126,21 @@ function stayHtml(){
 }
 function legendHtml(){
  return '<div class="legend"><b>图例</b><br>'+
-  '<span style="color:'+DAYC['12']+'">■ 12日</span> <span style="color:'+DAYC['13']+'">■ 13日</span> <span style="color:'+DAYC['14']+'">■ 14日</span> <span style="color:'+DAYC.stay+'">■ 住宿</span> <span style="color:#8D6E63">■ 往届参考</span><br>'+
-  '实线=城际示意 · 圆点虚线=步行 · 长虚线=航班示意 · 紫虚线=13日晚回广州</div>';
+  '<span style="color:'+DAYC['12']+'">■ 12日</span> <span style="color:'+DAYC['13']+'">■ 13日</span> <span style="color:'+DAYC.stay+'">■ 住宿</span> <span style="color:#8D6E63">■ 往届参考</span><br>'+
+  '实线=城际示意 · 圆点虚线=步行 · 紫虚线=13日晚回广州</div>';
 }
 
 function tripHtml(d){
  if(d==='all')return overviewHtml()+legendHtml();
  if(d==='12')return day12Html()+legendHtml();
  if(d==='13')return day13Html()+legendHtml();
- if(d==='14')return day14Html()+legendHtml();
  if(d==='stay')return stayHtml()+legendHtml();
  return overviewHtml();
 }
 function ticketHtml(){
  var h='<div class="note">购票/预约整理，不代买。价格与库存以官方页面为准。</div>';
  h+='<div class="card bk hot" style="--c:#E53935"><span class="cd">最要紧</span><div class="when">大麦 · 航展公众日门票</div><div><b>12/13 × 2 张</b></div><div class="mt">普通档约 ¥600 · 高档约 ¥1000</div><div class="mt">唯一渠道：大麦 App / 官网；认准官方，勿信二手</div><div class="src">展期 12/7–13 · 公众日 11–13</div></div>';
- h+='<div class="card bk" style="--c:#EF6C00"><div class="when">去程机票</div><div><b>HGH → CAN</b></div><div class="mt">参考 MU5211 上午班 · 约 ¥450/人 <span class="ref">参考价</span></div></div>';
  h+='<div class="card bk" style="--c:#1565C0"><div class="when">城际票</div><div><b>广珠城际 + 珠机城际</b></div><div class="mt">提前购买；航展期间紧张</div></div>';
- h+='<div class="card bk" style="--c:#6A1B9A"><div class="when">返程机票</div><div><b>CAN → HGH</b></div><div class="mt"><span class="tbd">班次待选</span></div></div>';
  h+='<div class="sep">待办清单</div><ul class="todo">';
  TODOS.forEach(function(t,i){h+='<li><label><input type="checkbox" data-todo="'+i+'"> '+t+'</label></li>';});
  h+='</ul><div class="note">勾选状态保存在本机浏览器 localStorage。</div>';
@@ -218,7 +198,7 @@ document.getElementById('body').addEventListener('click',function(ev){if(ev.targ
  var t=ev.target.closest('[data-poi],[data-go]');if(!t)return;
  if(t.dataset.go){show(t.dataset.go);setMain('trip');return;}
  if(t.dataset.poi){var k=t.dataset.poi,ll=llOf(k);if(!ll)return;
-  var want=POI[k].day;if(curD!=='all'&&curD!==want&&!(k==='gzs'||k==='zhs'||k==='can'||k==='hgh'))show(want==='stay'?'stay':want,false);
+  var want=POI[k].day;if(curD!=='all'&&curD!==want&&!(k==='gzs'||k==='zhs'))show(want==='stay'?'stay':want,false);
   if(isMob())setSheet('peek');map.setView(ll,Math.max(map.getZoom(),13),{animate:true});
   setTimeout(function(){var layers=[];map.eachLayer(function(Lyr){if(Lyr.getLatLng&&Lyr.getPopup){var g=Lyr.getLatLng();if(Math.abs(g.lat-ll[0])<1e-5&&Math.abs(g.lng-ll[1])<1e-5)layers.push(Lyr);}});if(layers[0])layers[0].openPopup();},350);}
 });
