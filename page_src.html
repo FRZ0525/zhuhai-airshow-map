@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<title>杭州 → 珠海航展 行程地图（12/12–12/14）</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif;color:#222;-webkit-text-size-adjust:100%}
+#map{position:absolute;top:0;bottom:0;right:0;left:420px}
+#side{position:absolute;top:0;left:0;bottom:0;width:420px;background:#fff;box-shadow:2px 0 8px rgba(0,0,0,.15);display:flex;flex-direction:column;z-index:1000}
+#hdr{padding:12px 14px 6px;border-bottom:1px solid #eee}
+#hdr h1{font-size:17px;margin:0 0 4px}
+#hdr .sub{font-size:12.5px;color:#555;line-height:1.5}
+#handle{display:none}
+.mtabs{display:flex;gap:4px;padding:8px 10px 0;flex-wrap:wrap}
+.mtab{flex:1;min-width:64px;border:1px solid #ccd;border-radius:8px 8px 0 0;border-bottom:none;background:#f4f5f8;padding:7px 0;text-align:center;font-size:13px;cursor:pointer;user-select:none}
+.mtab.on{background:#fff;font-weight:600;color:#0d47a1;box-shadow:inset 0 3px 0 #1565C0}
+.dtabs{display:flex;gap:5px;padding:8px 14px;border-top:1px solid #ccd;flex-wrap:wrap}
+.dtab{border:1.5px solid var(--c,#888);color:var(--c,#555);background:#fff;border-radius:16px;padding:4px 11px;font-size:13px;cursor:pointer;user-select:none;white-space:nowrap}
+.dtab.on{background:var(--c,#555);color:#fff}
+#body{flex:1;overflow-y:auto;padding:4px 14px 18px;-webkit-overflow-scrolling:touch}
+.pane{display:none}.pane.on{display:block}
+.tl{position:relative;margin:6px 0 0 4px;padding-left:18px;border-left:3px solid var(--c,#999)}
+.tli{position:relative;margin:0 0 10px;font-size:13.5px;line-height:1.5}
+.tli:before{content:"";position:absolute;left:-26px;top:3px;width:13px;height:13px;border-radius:50%;background:#fff;border:3px solid var(--c,#999)}
+.tli.mv:before{width:9px;height:9px;left:-24px;top:5px;border-width:2px;background:var(--c,#999)}
+.tli .tm{font-weight:600;color:var(--c,#333);margin-right:6px}
+.tli.poi{cursor:pointer;background:#fafbfd;border:1px solid #e6e8ee;border-radius:8px;padding:6px 8px}
+.tli.poi:hover{border-color:var(--c,#999)}
+.tli .nm{font-weight:600;font-size:14px}
+.tli .num{display:inline-block;min-width:20px;height:20px;line-height:20px;border-radius:10px;background:var(--c,#455a64);color:#fff;text-align:center;font-size:11px;margin-right:5px;padding:0 4px}
+.tli .mt{color:#555;font-size:12.5px}
+.sep{font-weight:600;margin:14px 0 6px;color:#333;font-size:14px}
+.card{border:1px solid #e3e6ec;border-radius:10px;padding:9px 11px;margin:8px 0;font-size:13.5px;line-height:1.55;background:#fff}
+.card h3{margin:0 0 4px;font-size:15px}
+.note{font-size:12px;color:#666;line-height:1.5;margin:8px 0}
+.warn{color:#b71c1c}
+.warn-box{background:#fff8e1;border-color:#ffe082}
+.bk{border-left:5px solid var(--c);}
+.bk .when{font-size:15px;font-weight:700}
+.bk .cd{float:right;font-size:12px;border-radius:10px;padding:1px 8px;background:#eceff1;color:#455a64}
+.bk.hot .when:after{content:" ⚠";color:#d84315}
+.bk .src{font-size:11.5px;color:#888;margin-top:4px}
+.tbd{display:inline-block;font-size:11px;padding:0 5px;border-radius:3px;background:#fce4ec;color:#c2185b;border:1px dashed #f48fb1}
+.ref{display:inline-block;font-size:11px;padding:0 5px;border-radius:3px;border:1px dashed #ff9800;color:#ef6c00}
+.legend{font-size:12.5px;line-height:1.9;margin-top:10px}
+.navb{margin-top:6px;display:flex;flex-wrap:wrap;gap:5px}
+.navb a{font-size:12.5px;text-decoration:none;border-radius:5px;padding:3px 8px;color:#fff;background:#1677ff}
+.navb a.bd{background:#2b5ef5}
+.navb a.lt{background:#fff;color:#1677ff;border:1px solid #1677ff}
+.leaflet-popup-content{margin:10px 12px;font-size:13px;line-height:1.55;min-width:230px;max-width:300px}
+.pp h4{margin:0 0 3px;font-size:15px}
+.pp .t{color:#555;font-weight:600;margin-bottom:4px}
+.pp .r{margin:2px 0}
+.pp .r b.l{display:inline-block;min-width:40px;color:#666;font-weight:600}
+.pin{width:26px;height:26px;border-radius:13px;color:#fff;font-weight:700;font-size:12px;line-height:22px;text-align:center;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.45)}
+.pin.big{width:32px;height:32px;border-radius:16px;line-height:28px;font-size:13px}
+.pin.ref{opacity:.85;border-style:dashed}
+.pin.hotel{border-radius:6px}
+#locbtn{position:absolute;right:10px;top:120px;z-index:900;background:#fff;border:2px solid rgba(0,0,0,.2);border-radius:4px;width:34px;height:34px;font-size:17px;line-height:30px;text-align:center;cursor:pointer}
+.two-box{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0}
+.box{border:1px dashed #ccd;border-radius:8px;padding:8px 10px;font-size:13px}
+.box h4{margin:0 0 4px;font-size:14px}
+.planes{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.plane{border:1px solid #e3e6ec;border-radius:8px;overflow:hidden;font-size:12.5px;line-height:1.4}
+.plane img{width:100%;height:90px;object-fit:cover;display:block;background:#eee}
+.plane .nm{font-weight:700;padding:4px 6px 0;font-size:13px}
+.plane .mt{padding:0 6px 6px;color:#555}
+.gal{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.gal figure{margin:0;border:1px solid #e3e6ec;border-radius:8px;overflow:hidden}
+.gal img{width:100%;height:100px;object-fit:cover;display:block}
+.gal figcaption{font-size:11px;padding:4px 6px;color:#555;line-height:1.35}
+.gal a{color:#1565C0;text-decoration:none}
+.todo{list-style:none;padding:0;margin:0}
+.todo li{padding:5px 0;border-bottom:1px dashed #eee;font-size:13.5px}
+.todo input{margin-right:6px;transform:scale(1.15);accent-color:#2E7D32}
+@media (max-width:767px){
+ #map{left:0;bottom:0}
+ #side{top:auto;width:100%;height:var(--sh,46vh);border-radius:14px 14px 0 0;box-shadow:0 -2px 12px rgba(0,0,0,.25);transition:height .2s}
+ #side.drag{transition:none}
+ #handle{display:block;padding:7px 0 3px;cursor:grab;touch-action:none}
+ #handle i{display:block;width:44px;height:5px;border-radius:3px;background:#c4c7cc;margin:0 auto}
+ #hdr{padding:2px 12px 4px;touch-action:none}
+ #hdr h1{font-size:15px}
+ .mtabs{padding:6px 8px 0}.dtabs{padding:7px 12px;gap:4px}.dtab{padding:4px 9px;font-size:12.5px}
+ #body{padding:4px 12px calc(18px + env(safe-area-inset-bottom))}
+ #locbtn{top:auto;bottom:calc(var(--sh,46vh) + 12px)}
+ .leaflet-control-attribution{display:none}
+ .two-box,.planes,.gal{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div id="map"></div>
+<div id="locbtn" title="定位我的位置">◎</div>
+<div id="side">
+ <div id="handle"><i></i></div>
+ <div id="hdr"><h1>杭州 → 珠海航展 行程地图</h1>
+  <div class="sub">2 人 · 12/12–12/14 · Airshow China 2026 · 观展 12/13（公众日）· 门票大麦</div></div>
+ <div class="mtabs">
+  <div class="mtab on" data-m="trip">🗺️ 行程</div>
+  <div class="mtab" data-m="ticket">🎫 票务</div>
+  <div class="mtab" data-m="guide">✈ 观展</div>
+  <div class="mtab" data-m="gallery">🖼 实拍</div>
+  <div class="mtab" data-m="tips">💡 贴士</div>
+ </div>
+ <div class="dtabs" id="dtabs">
+  <div class="dtab on" data-d="all" style="--c:#455a64">总览</div>
+  <div class="dtab" data-d="12" style="--c:#EF6C00">12日抵达</div>
+  <div class="dtab" data-d="13" style="--c:#E53935">13日观展</div>
+  <div class="dtab" data-d="14" style="--c:#1565C0">14日返程</div>
+  <div class="dtab" data-d="stay" style="--c:#2E7D32">住宿区域</div>
+ </div>
+ <div id="body">
+  <div class="pane on" id="p-trip"></div>
+  <div class="pane" id="p-ticket"></div>
+  <div class="pane" id="p-guide"></div>
+  <div class="pane" id="p-gallery"></div>
+  <div class="pane" id="p-tips"></div>
+ </div>
+</div>
+<script>window.ZHD=/*DATA*/;</script>
+<script>/*CONTENT*/</script>
+<script>/*APP*/</script>
+</body>
+</html>
