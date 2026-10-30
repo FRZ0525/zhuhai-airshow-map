@@ -111,6 +111,28 @@ html,body{margin:0;height:100%;font-family:-apple-system,BlinkMacSystemFont,"Pin
 #lb .x{position:absolute;top:12px;right:16px;background:0;border:0;color:#fff;font-size:28px;cursor:pointer;line-height:1}
 @media(max-width:720px){.ggrid{grid-template-columns:repeat(2,1fr)}}
 
+
+/* mobile fixes */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+#lb{height:100%;height:100dvh;-webkit-user-select:none;user-select:none;touch-action:pan-y}
+#lb img{max-height:70vh;max-height:70dvh;-webkit-user-drag:none}
+#lb .x{top:calc(8px + env(safe-area-inset-top));right:calc(8px + env(safe-area-inset-right));width:44px;height:44px;font-size:32px;background:rgba(0,0,0,.35);border-radius:22px}
+#lb .cap{padding:0 12px calc(8px + env(safe-area-inset-bottom))}
+#lb .hint{display:none;color:#aaa;font-size:12px;margin-top:6px}
+@media (max-width:767px){
+ .mtab{min-height:40px;line-height:26px;font-size:14px}
+ .dtab{min-height:40px;line-height:26px;font-size:13.5px;padding:4px 12px}
+ .gfilt{gap:6px}
+ .gfilt button{min-height:40px;font-size:13.5px;padding:6px 12px}
+ .leaflet-touch .leaflet-bar a{width:40px;height:40px;line-height:40px}
+ .gmeta,#hdr .sub{font-size:13px}
+ .gal figcaption,.bk .src{font-size:12.5px}
+ #lb .nav{width:40px;height:56px;font-size:24px;background:rgba(255,255,255,.12)}
+ #lb .prev{left:4px}#lb .next{right:4px}
+ #lb .cap{font-size:13.5px}#lb .cap a{font-size:12.5px}
+ #lb .hint{display:block}
+ .leaflet-popup-content{max-height:60vh;overflow:auto;-webkit-overflow-scrolling:touch}
+}
 </style>
 </head>
 <body>
@@ -145,7 +167,7 @@ html,body{margin:0;height:100%;font-family:-apple-system,BlinkMacSystemFont,"Pin
 <div class="pane" id="p-tips"></div>
  </div>
 </div>
-<div id="lb" role="dialog" aria-modal="true"><button class="x" id="lbx" aria-label="关闭">×</button><button class="nav prev" id="lbp" aria-label="上一张">‹</button><img id="lbi" alt=""><button class="nav next" id="lbn" aria-label="下一张">›</button><div class="cap" id="lbc"></div></div>
+<div id="lb" role="dialog" aria-modal="true"><button class="x" id="lbx" aria-label="关闭">×</button><button class="nav prev" id="lbp" aria-label="上一张">‹</button><img id="lbi" alt=""><button class="nav next" id="lbn" aria-label="下一张">›</button><div class="cap" id="lbc"></div><div class="hint">左右滑动翻页 · 点空白处关闭</div></div>
 <script>window.ZHD=/*DATA*/;</script>
 <script>/*CONTENT*/</script>
 <script>/*APP*/</script>

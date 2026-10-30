@@ -284,3 +284,9 @@ function lbStep(d){openLb(_lbIdx+d);}
   });
 })();
 
+(function(){var lb=document.getElementById('lb');if(!lb)return;var sx=null,sy=0,st=0;
+ lb.addEventListener('touchstart',function(e){if(e.touches.length!==1){sx=null;return;}sx=e.touches[0].clientX;sy=e.touches[0].clientY;st=Date.now();},{passive:true});
+ lb.addEventListener('touchmove',function(e){if(sx===null)return;var dx=e.touches[0].clientX-sx,dy=e.touches[0].clientY-sy;if(Math.abs(dx)>Math.abs(dy)&&e.cancelable)e.preventDefault();},{passive:false});
+ lb.addEventListener('touchend',function(e){if(sx===null)return;var t=e.changedTouches[0],dx=t.clientX-sx,dy=t.clientY-sy;sx=null;
+  if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy)*1.2){lbStep(dx<0?1:-1);}else if(dy>90&&Math.abs(dy)>Math.abs(dx)*1.5){closeLb();}},{passive:true});
+})();
