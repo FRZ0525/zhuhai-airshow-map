@@ -234,39 +234,39 @@ function mzHtml(){var h='<div class="card"><h3>📚 观展攻略（往届实战�
  return h+'</ul><small>含【视频】标注的文章中的视频需在微信内观看。</small></div>';}
 var MZLIST=[["2024珠海航展流水帐（展馆）", "https://mp.weixin.qq.com/s/TL--f27L_PC1axXnA0gqHA"], ["2022珠海航展精彩亮点", "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247503745&idx=1&sn=19eb5c1ccd34af03721c77408ebd1041&chksm=e8dbcb35dfac422342448b3758d3060b123cd2eaa62c16b0787d9eef51e9225e838c737b30e4&scene=21"], ["2022珠海航展离场日的流水账", "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247503682&idx=1&sn=5c883b10337e7b22a30c7a277f4c0d99&chksm=e8dbcbf6dfac42e0ee4d6f05536a1a6e72d80ec8c2d63572cc9f1fcff20c24a3962a07c38086&scene=21"], ["2022珠海航展开幕式精彩图集", "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247503455&idx=1&sn=645d9303551669a11e5f5bd102121c11&chksm=e8dbcaebdfac43fdd836fe67e2f913bf7e280e521382df18b250b8f518943dcab3a5936a939d&scene=21"], ["2022珠海航展节目单及已到场机型(28-31日)", "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247503285&idx=1&sn=e903f7d283fe17c29ecb24842a205669&chksm=e8dbc901dfac4017c65b74b439b5717787588cc01d2c5df9f157c74f859de75d9d0679f48a1c&scene=21"], ["【图集&视频】2021珠海航展室内展馆", "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247499998&idx=1&sn=9806b7a1d6150827cce27b7e1c49aea6&chksm=e8dbc46adfac4d7cc42341e96816108021609801e46156102db6308b3f23611e74e2b0dc8e8a&scene=21"], ["【图集】2021珠海航展空军静态展", "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247499457&idx=1&sn=634754da9a2feeab4e360dfdaf57d04f&chksm=e8dbfa75dfac7363c07a266ac50be180efacf51e60ff1f398a5a16a1b29b4ed888e920126cf1&scene=21"], ["【视频&图集】2021珠海航展教10飞行表演", "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247499328&idx=1&sn=152f00a5a081f5e038b4f36d584355bf&chksm=e8dbfaf4dfac73e20c446cd9c0287702aa0ffcb0b96d92a9b1078017b25a6bc57f937d46de01&scene=21"], ["【视频&图集】2021珠海航展的红鹰表演队", "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247499278&idx=1&sn=ed50b86aca103cae45fa15afca9e7739&chksm=e8dbfabadfac73ac22582caa220186034a485323914450ed340b966a6881afa6b9dc1fa7a888&scene=21"], ["【视频】2021珠海航展撤场日", "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247499045&idx=1&sn=6d2996f8b6a78673b21ee45cd2fcc08a&chksm=e8dbf991dfac7087dfbee937ee918e575c51bebef40852df54ab6c128a110cc3d69a5c7655f0&scene=21"], ["2021珠海航展离场日的流水账", "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247498855&idx=1&sn=70f147656aa808c502c75c49aeb6eb71&chksm=e8dbf8d3dfac71c57ce4b09f282f8dea8627886ff3902aa46c298647dbc81763b55dd5aebd00&scene=21"], ["【图集&视频】2021珠海航展八一飞行表演队", "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247499039&idx=1&sn=bbca241085ddf09902adbcf3bc86ad43&chksm=e8dbf9abdfac70bd2c5107a26fffd0dc92978474b5bcd0e134fce959e0388e3580b9c30280bb&scene=21"], ["【图集&视频】2021珠海航展无人机和水上飞机", "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247498975&idx=1&sn=81fe2486a1f0cef8f66e8b258f56d5a5&chksm=e8dbf86bdfac717d528074e4065380b7c88923f9ec0c83839055b2dff2a052790e601d1798b8&scene=21"], ["【图集&视频】2021珠海航展歼20飞行表演", "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247498941&idx=1&sn=f5d5489cb9d91044141513a1d99c6cdb&chksm=e8dbf809dfac711f186fd0506479399f64a097e990d75f15a6cba45c8fa189b80f5630f935e3&scene=21"], ["【图集&视频】2021珠海航展地面机动展示", "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247498911&idx=1&sn=9a975b46eea287d1a1b88dd3bbb7b729&chksm=e8dbf82bdfac713d08ea447483776541cc4516fc5994a8a5c2ad315ddbd0cf1996466513872e&scene=21"], ["珠海航展观看指南2021", "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247498801&idx=1&sn=34ceaf79b0027a863ae426b5ff34d8b1&chksm=e8dbf885dfac719351a7b2e64f01d5f2826a3679a24cc9eee75a9e6d1bf9d51a4f86bd753afd&scene=21"], ["2018珠海航展", "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247516472&idx=1&sn=01fdd8bfce19c4240c44e3349f4ad1c6&chksm=e8db858cdfac0c9afe0b904de17f4baf4e0009bb2412b06ff69723804d9a6957b8eb6dca1fe3&scene=21"], ["2016珠海航展", "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247516450&idx=1&sn=3814295af94c03761d92c51b02dc0978&chksm=e8db8596dfac0c80f2aaf9991b4d352f04fd71f6ce89d3456e24b82d4ddd646e2a0bce8db5fc&scene=21"], ["2014珠海航展", "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247516250&idx=1&sn=7c090022da9d7adac7da4e725709dabb&chksm=e8db84eedfac0df86ad0baf050edb6915db202bef783e4c90e956408360123911dd2fd849759&scene=21"], ["2012珠海航展", "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247516151&idx=1&sn=8aa55b1560d2772369d02f3b3cea0bd9&chksm=e8dbbb43dfac3255c44ec796bddbc4759649813617252c0873419cfe9f1c5d130cd5d571237b&scene=21"], ["2010珠海航展", "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247485646&idx=1&sn=50fa27f823b5707a0b23c949c746aa7c&chksm=e8d80c7adfaf856c0276851c6d971a6541e724a5a5d35d50fd1a1700147be3c2200997cbeb08&scene=21"], ["2008珠海航展", "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247485667&idx=1&sn=6e9e3b8f01fe6a95719524bb5d0294e9&chksm=e8d80c57dfaf85414e809a1478c2af21cb8c3b7afa5dafa90819b18d0b361e1cec85646fa3e9&scene=21"]];
 
-var _galY='all',_galC='all',_lbIdx=0,_lbList=[];
-function albumHtml(){
-  var ys={},cs={};GALDATA.forEach(function(p){ys[p.y]=1;cs[p.c]=1;});
+var _galY='all',_galC='all',_galS='all',_lbIdx=0,_lbList=[];
+function galAll(){var hd=GALHD.map(function(p){return {s:'hd',th:'assets/photos/hd/thumb/'+p.f,fu:'assets/photos/hd/full/'+p.f,y:p.y,c:p.c,t:p.t,a:p.a,l:p.l,u:p.u};});
+ var mz=GALDATA.map(function(p){return {s:'mz',th:'assets/photos/muzi/gallery_thumb/'+p.f,fu:'assets/photos/muzi/gallery_full/'+p.f,y:p.y,c:p.c,t:p.t,u:p.u};});return hd.concat(mz);}
+function albumHtml(){var ALL=galAll();
+  var ys={},cs={};ALL.forEach(function(p){ys[p.y]=1;cs[p.c]=1;});
   var years=['all'].concat(Object.keys(ys).sort().reverse());
   var cats=['all'].concat(['飞行表演','静态展示','室内展馆','现场与人流'].filter(function(c){return cs[c];}));
-  var list=GALDATA.filter(function(p){return (_galY==='all'||p.y===_galY)&&(_galC==='all'||p.c===_galC);});
+  var list=ALL.filter(function(p){return (_galS==='all'||p.s===_galS)&&(_galY==='all'||p.y===_galY)&&(_galC==='all'||p.c===_galC);});
   _lbList=list;
-  var h='<div class="card"><h3>🖼 珠海航展图集</h3>共 <b>'+GALDATA.length+'</b> 张，整理自公众号「木子的田心」往届航展实拍。点缩略图即可全屏浏览，左右翻页，无需再打开文章。</div>';
-  h+='<div class="gmeta">当前显示 '+list.length+' 张 · 点击大图后可用 ← → 或屏幕两侧按钮翻页，Esc 关闭</div>';
-  h+='<div class="gfilt" id="gy">';
+  var h='<div class="card"><h3>🖼 珠海航展图集</h3>共 <b>'+ALL.length+'</b> 张：高清 Wikimedia '+GALHD.length+' 张（大图长边约 2560px）+ 公众号「木子的田心」'+GALDATA.length+' 张。点缩略图全屏浏览，← → 翻页，Esc 关闭。</div>';
+  h+='<div class="gmeta">当前显示 '+list.length+' 张</div><div class="gfilt" id="gs">';
+  [['all','全部来源'],['hd','高清(Wikimedia)'],['mz','公众号 木子的田心']].forEach(function(s){h+='<button data-s="'+s[0]+'" class="'+(_galS===s[0]?'on':'')+'">'+s[1]+'</button>';});
+  h+='</div><div class="gfilt" id="gy">';
   years.forEach(function(y){h+='<button data-y="'+y+'" class="'+(_galY===y?'on':'')+'">'+(y==='all'?'全部年份':y)+'</button>';});
   h+='</div><div class="gfilt" id="gc">';
   cats.forEach(function(c){h+='<button data-c="'+c+'" class="'+(_galC===c?'on':'')+'">'+(c==='all'?'全部类型':c)+'</button>';});
   h+='</div><div class="ggrid">';
-  list.forEach(function(p,i){
-    h+='<figure class="gi" data-i="'+i+'"><img src="assets/photos/muzi/gallery/'+p.f+'" alt="'+mzE(p.t)+'" loading="lazy"></figure>';
-  });
-  h+='</div><div class="gmeta" style="margin-top:10px">图源：公众号 木子的田心（版权归原作者）</div>';
-  return h;
+  list.forEach(function(p,i){h+='<figure class="gi" data-i="'+i+'"><img src="'+p.th+'" alt="'+mzE(p.t)+'" loading="lazy">'+(p.s==='hd'?'<span style="position:absolute;left:3px;top:3px;background:#1565C0;color:#fff;font-size:10px;padding:0 4px;border-radius:3px">HD</span>':'')+'</figure>';});
+  return h+'</div>';
 }
 function bindAlbum(){
+  document.querySelectorAll('#gs button').forEach(function(b){b.onclick=function(){_galS=b.dataset.s;document.getElementById('p-album').innerHTML=albumHtml();bindAlbum();};});
   document.querySelectorAll('#gy button').forEach(function(b){b.onclick=function(){_galY=b.dataset.y;document.getElementById('p-album').innerHTML=albumHtml();bindAlbum();};});
   document.querySelectorAll('#gc button').forEach(function(b){b.onclick=function(){_galC=b.dataset.c;document.getElementById('p-album').innerHTML=albumHtml();bindAlbum();};});
   document.querySelectorAll('.ggrid .gi').forEach(function(el){el.onclick=function(){openLb(+el.dataset.i);};});
 }
 function openLb(i){
   if(!_lbList.length)return;_lbIdx=((i%_lbList.length)+_lbList.length)%_lbList.length;
-  var p=_lbList[_lbIdx];
-  var img=document.getElementById('lbi');
-  img.src='assets/photos/muzi/gallery/'+p.f;
-  document.getElementById('lbc').innerHTML='<b>'+mzE(p.y)+' · '+mzE(p.c)+'</b><br>'+mzE(p.t)+'<br><span style="opacity:.7;font-size:11px">图源：公众号 木子的田心 · '+(_lbIdx+1)+'/'+_lbList.length+'</span>';
-  document.getElementById('lb').classList.add('on');
-  document.body.style.overflow='hidden';
+  var p=_lbList[_lbIdx];document.getElementById('lbi').src=p.fu;
+  var src=p.s==='hd'?('作者：'+mzE(p.a)+' · '+mzE(p.l)+' · <a href="'+p.u+'" target="_blank" rel="noopener">Wikimedia Commons</a>'):'图源：公众号 木子的田心';
+  document.getElementById('lbc').innerHTML='<b>'+mzE(p.y)+' · '+mzE(p.c)+(p.s==='hd'?' · 高清':'')+'</b><br>'+mzE(p.t)+'<br><span style="opacity:.75;font-size:11px">'+src+' · '+(_lbIdx+1)+'/'+_lbList.length+'</span>';
+  document.getElementById('lb').classList.add('on');document.body.style.overflow='hidden';
+  [1,-1].forEach(function(d){var q=_lbList[(_lbIdx+d+_lbList.length)%_lbList.length];if(q){var im=new Image();im.src=q.fu;}});
 }
 function closeLb(){document.getElementById('lb').classList.remove('on');document.body.style.overflow='';}
 function lbStep(d){openLb(_lbIdx+d);}
