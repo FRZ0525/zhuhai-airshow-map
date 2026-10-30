@@ -772,6 +772,7 @@ html,body{margin:0;height:100%;font-family:-apple-system,BlinkMacSystemFont,"Pin
   <div class="mtab" data-m="ticket">🎫 票务</div>
   <div class="mtab" data-m="guide">✈ 观展</div>
   <div class="mtab" data-m="gallery">🖼 实拍</div>
+  <div class="mtab" data-m="muzi">📚 实战</div>
   <div class="mtab" data-m="tips">💡 贴士</div>
  </div>
  <div class="dtabs" id="dtabs">
@@ -785,7 +786,8 @@ html,body{margin:0;height:100%;font-family:-apple-system,BlinkMacSystemFont,"Pin
   <div class="pane" id="p-ticket"></div>
   <div class="pane" id="p-guide"></div>
   <div class="pane" id="p-gallery"></div>
-  <div class="pane" id="p-tips"></div>
+  <div class="pane" id="p-muzi"></div>
+<div class="pane" id="p-tips"></div>
  </div>
 </div>
 <script>window.ZHD={
@@ -1013,6 +1015,35 @@ var TIPS=[
   ['📦 携带','身份证、电子票、耳塞、充电宝、防晒。无人机一般不行。安检规定以现场为准。'],
   ['⚠ 未确认项','2026 飞行日程、歼-20 是否静态展出、勇士队是否来、金凤台/莲洲是否值得去——出发前再核官方与大麦。']
 ];
+
+/* 往届实战经验 · 来源：公众号「木子的田心」 */
+var MZSRC='图源：公众号 木子的田心（版权归原作者）';
+var MZART={"0": "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247503745&idx=1&sn=19eb5c1ccd34af03721c77408ebd1041&chksm=e8dbcb35dfac422342448b3758d3060b123cd2eaa62c16b0787d9eef51e9225e838c737b30e4&scene=21", "1": "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247503682&idx=1&sn=5c883b10337e7b22a30c7a277f4c0d99&chksm=e8dbcbf6dfac42e0ee4d6f05536a1a6e72d80ec8c2d63572cc9f1fcff20c24a3962a07c38086&scene=21", "2": "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247503455&idx=1&sn=645d9303551669a11e5f5bd102121c11&chksm=e8dbcaebdfac43fdd836fe67e2f913bf7e280e521382df18b250b8f518943dcab3a5936a939d&scene=21", "3": "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247503285&idx=1&sn=e903f7d283fe17c29ecb24842a205669&chksm=e8dbc901dfac4017c65b74b439b5717787588cc01d2c5df9f157c74f859de75d9d0679f48a1c&scene=21", "4": "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247499998&idx=1&sn=9806b7a1d6150827cce27b7e1c49aea6&chksm=e8dbc46adfac4d7cc42341e96816108021609801e46156102db6308b3f23611e74e2b0dc8e8a&scene=21", "5": "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247499457&idx=1&sn=634754da9a2feeab4e360dfdaf57d04f&chksm=e8dbfa75dfac7363c07a266ac50be180efacf51e60ff1f398a5a16a1b29b4ed888e920126cf1&scene=21", "6": "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247499328&idx=1&sn=152f00a5a081f5e038b4f36d584355bf&chksm=e8dbfaf4dfac73e20c446cd9c0287702aa0ffcb0b96d92a9b1078017b25a6bc57f937d46de01&scene=21", "7": "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247499278&idx=1&sn=ed50b86aca103cae45fa15afca9e7739&chksm=e8dbfabadfac73ac22582caa220186034a485323914450ed340b966a6881afa6b9dc1fa7a888&scene=21", "8": "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247499045&idx=1&sn=6d2996f8b6a78673b21ee45cd2fcc08a&chksm=e8dbf991dfac7087dfbee937ee918e575c51bebef40852df54ab6c128a110cc3d69a5c7655f0&scene=21", "9": "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247498855&idx=1&sn=70f147656aa808c502c75c49aeb6eb71&chksm=e8dbf8d3dfac71c57ce4b09f282f8dea8627886ff3902aa46c298647dbc81763b55dd5aebd00&scene=21", "10": "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247499039&idx=1&sn=bbca241085ddf09902adbcf3bc86ad43&chksm=e8dbf9abdfac70bd2c5107a26fffd0dc92978474b5bcd0e134fce959e0388e3580b9c30280bb&scene=21", "11": "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247498975&idx=1&sn=81fe2486a1f0cef8f66e8b258f56d5a5&chksm=e8dbf86bdfac717d528074e4065380b7c88923f9ec0c83839055b2dff2a052790e601d1798b8&scene=21", "12": "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247498941&idx=1&sn=f5d5489cb9d91044141513a1d99c6cdb&chksm=e8dbf809dfac711f186fd0506479399f64a097e990d75f15a6cba45c8fa189b80f5630f935e3&scene=21", "13": "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247498911&idx=1&sn=9a975b46eea287d1a1b88dd3bbb7b729&chksm=e8dbf82bdfac713d08ea447483776541cc4516fc5994a8a5c2ad315ddbd0cf1996466513872e&scene=21", "14": "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247498801&idx=1&sn=34ceaf79b0027a863ae426b5ff34d8b1&chksm=e8dbf885dfac719351a7b2e64f01d5f2826a3679a24cc9eee75a9e6d1bf9d51a4f86bd753afd&scene=21", "15": "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247516472&idx=1&sn=01fdd8bfce19c4240c44e3349f4ad1c6&chksm=e8db858cdfac0c9afe0b904de17f4baf4e0009bb2412b06ff69723804d9a6957b8eb6dca1fe3&scene=21", "16": "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247516450&idx=1&sn=3814295af94c03761d92c51b02dc0978&chksm=e8db8596dfac0c80f2aaf9991b4d352f04fd71f6ce89d3456e24b82d4ddd646e2a0bce8db5fc&scene=21", "17": "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247516250&idx=1&sn=7c090022da9d7adac7da4e725709dabb&chksm=e8db84eedfac0df86ad0baf050edb6915db202bef783e4c90e956408360123911dd2fd849759&scene=21", "18": "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247516151&idx=1&sn=8aa55b1560d2772369d02f3b3cea0bd9&chksm=e8dbbb43dfac3255c44ec796bddbc4759649813617252c0873419cfe9f1c5d130cd5d571237b&scene=21", "19": "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247485646&idx=1&sn=50fa27f823b5707a0b23c949c746aa7c&chksm=e8d80c7adfaf856c0276851c6d971a6541e724a5a5d35d50fd1a1700147be3c2200997cbeb08&scene=21", "20": "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247485667&idx=1&sn=6e9e3b8f01fe6a95719524bb5d0294e9&chksm=e8d80c57dfaf85414e809a1478c2af21cb8c3b7afa5dafa90819b18d0b361e1cec85646fa3e9&scene=21", "z": "https://mp.weixin.qq.com/s/TL--f27L_PC1axXnA0gqHA"};
+var MZDAY=[
+ ['约 6:00','广州南早班珠机城际 → 珠海机场站（约 8:00 到）；原作者约 6:00 出发、8:00 到，早到入场不挤（出站进门路线见行程页）','z'],
+ ['8:00–10:30','先室内：1 号馆（中航工业，战斗机模型）→ 7 号馆（航天科技，火箭/嫦娥/载人）→ 对面 9、10 号兵器馆；7 号馆最挤只宜打卡，9/10 门口常限流','z'],
+ ['表演前 30–60 分钟','提前到停机坪占位：发动机试车一响人群会涌向围栏；可拍飞行员列队登机','15'],
+ ['中午前后','停机坪看飞行表演；离大屏喇叭远一点。表演时段跨中午、内场多为逆光，远离栏杆的空地也能看','14'],
+ ['表演后','静态区先走到最远端再往回拍（机头/全身/尾喷各一张），人从坪上下来后相对空；防空导弹、直升机区傍晚可能盖布','z'],
+ ['17:30 后','回室内补拍大件展品，人明显少','z'],
+ ['18:00–18:30','离场 → 珠海机场站城际回广州（同行有人当天回广州的，原作者提到需 15:00 撤场赶车，按你们车次留足余量）','15']
+];
+var MZTIPS=[
+ ['🎒 装备','硬底防水、不磨脚的鞋；折叠板凳（作者称“观展必备”，挤人时也能垫高）；自带水和干粮，别指望场内午饭；防晒（2021 烈日下相机半小时晒到罢工）；充电宝（场内有共享充电宝）',['15','14','z']],
+ ['🌧 雨天预案','自备雨衣，馆内免费雨衣常发完；下雨先室内后停机坪；低云大雨时表演会缩水甚至取消，2022 届整届仅 2 天好天气；雨大收相机护镜头',['z','0']],
+ ['📷 机位','主席台方向视角最好但最挤也最吵；场地西侧可拍飞机出击/返回与飞行员登机，但同为逆光，旁边客机发动机很吵；炮楼/金凤台是摄影党场外机位（需另付费、路远辛苦），作者不建议普通观众去',['14','15']],
+ ['⚠ 坑点','飞行节目单常临时变动、官方公布晚，单机只飞几分钟很常见；兵器馆最热门排队最久，表演时间一到别死磕；保安赶人说法不必全信；交通管制复杂，提前看官方通告',['14','3','z','0']],
+ ['🛫 想多看飞机？','航展结束次日（14 日）早上大量军机离场，可在机场周边看起降，时间随机、对非飞友可能枯燥——你们若 14 日还在珠海可以考虑',['1','9']]
+];
+var MZPH=[
+ ['muzi0_5.jpg','室内展馆人潮（2024）','z'],['muzi0_30.jpg','停机坪围观人群（2024）','z'],['muzi0_15.jpg','飞行表演（2024）','z'],
+ ['a14_1.jpg','场馆/门/停车场/机位示意（2021 观看指南）','14'],['a14_2.jpg','停机坪与围栏（2021）','14'],['a14_3.jpg','飞行员列队（2021）','14'],
+ ['a0_10.jpg','歼-20（2022）','0'],['a0_25.jpg','C919 滑行（2022）','0'],
+ ['a15_12.jpg','歼-20 编队（2018）','15'],['a15_20.jpg','停机坪静态展（2018）','15'],['a15_6.jpg','静态展细节拼图（2018）','15'],
+ ['a5_30.jpg','空军静态展（2021）','5'],['a5_5.jpg','空军静态展（2021）','5'],
+ ['a4_5.jpg','室内展馆·航天展品（2021）','4'],['a4_30.jpg','室内展馆（2021）','4'],
+ ['a16_10.jpg','表演队编队（2016）','16'],['a16_40.jpg','静态展拼图（2016）','16']
+];
 </script>
 <script>(function(){
 var D=window.ZHD, isMob=function(){return window.innerWidth<768;};
@@ -1047,6 +1078,7 @@ function popup(k){var p=POI[k],ll=llOf(k),approx=(D.approx||[]).indexOf(p.p||k)>
  if(p.do)h+='<div class="r"><b class="l">做什么</b>'+p.do+'</div>';
  if(p.tips)h+='<div class="r"><b class="l">提示</b>'+p.tips+'</div>';
  if(p.w)h+='<div class="r warn">⚠ '+p.w+'</div>';
+ if(k==='airshow'&&typeof MZPH!=='undefined'){h+='<div class="r"><b class="l">往届实拍</b><div style="display:flex;gap:4px;margin-top:3px">'+[MZPH[0],MZPH[1],MZPH[3]].map(function(p){return '<img src="assets/photos/muzi/'+p[0]+'" style="width:32%;height:60px;object-fit:cover;border-radius:4px" loading="lazy">';}).join('')+'</div><small>'+mzL('z','图源：公众号 木子的田心')+' · 见「实战」页</small></div>';}
  h+=nav(ll,p.n.replace(/（.*?）/g,'').split('·')[0].trim());
  return h+'</div>';}
 
@@ -1201,6 +1233,7 @@ function setMain(m){curM=m;if(m!=='trip')map.closePopup();
  if(m==='ticket'){document.getElementById('p-ticket').innerHTML=ticketHtml();restoreTodos();}
  if(m==='guide')document.getElementById('p-guide').innerHTML=guideHtml();
  if(m==='gallery')document.getElementById('p-gallery').innerHTML=galleryHtml();
+ if(m==='muzi')document.getElementById('p-muzi').innerHTML=mzHtml();
  if(m==='tips')document.getElementById('p-tips').innerHTML=tipsHtml();
  document.getElementById('body').scrollTop=0;
 }
@@ -1233,6 +1266,19 @@ var locM=null;document.getElementById('locbtn').onclick=function(){if(!navigator
 show('all');
 window.ZH={show:show,setMain:setMain,map:map};
 })();
+
+function mzE(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function mzL(k,t){var u=MZART[k];if(!u)return '';var tt=t||'原文';return '<a href="'+u+'" target="_blank" rel="noopener">'+tt+'</a>';}
+function mzHtml(){var h='<div class="card"><h3>📚 观展攻略（往届实战经验）</h3>整理自公众号「木子的田心」2008–2024 珠海航展系列图文/视频文章。往届经验仅供参考，2026 布局与节目以官方为准。</div>';
+ h+='<div class="card"><h3>⏱ 13 日公众日一天节奏</h3><ol style="padding-left:18px;margin:4px 0">';
+ MZDAY.forEach(function(r){h+='<li><b>'+r[0]+'</b>　'+r[1]+' <small>'+mzL(r[2],'来源')+'</small></li>';});h+='</ol></div>';
+ MZTIPS.forEach(function(t){h+='<div class="card"><h3>'+t[0]+'</h3>'+t[1]+'<div><small>来源：'+t[2].map(function(k,i){return mzL(k,'['+(i+1)+']');}).join(' ')+'</small></div></div>';});
+ h+='<div class="card"><h3>🖼 作者实拍</h3><div class="gal">';
+ MZPH.forEach(function(p){h+='<figure><img src="assets/photos/muzi/'+p[0]+'" alt="'+mzE(p[1])+'" loading="lazy"><figcaption>'+mzE(p[1])+'<br>'+mzL(p[2],'图源：公众号 木子的田心')+'</figcaption></figure>';});
+ h+='</div></div><div class="card"><h3>🔗 文章列表</h3><ul style="padding-left:18px;margin:4px 0">';
+ MZLIST.forEach(function(x){h+='<li><a href="'+x[1]+'" target="_blank" rel="noopener">'+mzE(x[0])+'</a></li>';});
+ return h+'</ul><small>含【视频】标注的文章中的视频需在微信内观看。</small></div>';}
+var MZLIST=[["2024珠海航展流水帐（展馆）", "https://mp.weixin.qq.com/s/TL--f27L_PC1axXnA0gqHA"], ["2022珠海航展精彩亮点", "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247503745&idx=1&sn=19eb5c1ccd34af03721c77408ebd1041&chksm=e8dbcb35dfac422342448b3758d3060b123cd2eaa62c16b0787d9eef51e9225e838c737b30e4&scene=21"], ["2022珠海航展离场日的流水账", "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247503682&idx=1&sn=5c883b10337e7b22a30c7a277f4c0d99&chksm=e8dbcbf6dfac42e0ee4d6f05536a1a6e72d80ec8c2d63572cc9f1fcff20c24a3962a07c38086&scene=21"], ["2022珠海航展开幕式精彩图集", "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247503455&idx=1&sn=645d9303551669a11e5f5bd102121c11&chksm=e8dbcaebdfac43fdd836fe67e2f913bf7e280e521382df18b250b8f518943dcab3a5936a939d&scene=21"], ["2022珠海航展节目单及已到场机型(28-31日)", "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247503285&idx=1&sn=e903f7d283fe17c29ecb24842a205669&chksm=e8dbc901dfac4017c65b74b439b5717787588cc01d2c5df9f157c74f859de75d9d0679f48a1c&scene=21"], ["【图集&视频】2021珠海航展室内展馆", "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247499998&idx=1&sn=9806b7a1d6150827cce27b7e1c49aea6&chksm=e8dbc46adfac4d7cc42341e96816108021609801e46156102db6308b3f23611e74e2b0dc8e8a&scene=21"], ["【图集】2021珠海航展空军静态展", "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247499457&idx=1&sn=634754da9a2feeab4e360dfdaf57d04f&chksm=e8dbfa75dfac7363c07a266ac50be180efacf51e60ff1f398a5a16a1b29b4ed888e920126cf1&scene=21"], ["【视频&图集】2021珠海航展教10飞行表演", "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247499328&idx=1&sn=152f00a5a081f5e038b4f36d584355bf&chksm=e8dbfaf4dfac73e20c446cd9c0287702aa0ffcb0b96d92a9b1078017b25a6bc57f937d46de01&scene=21"], ["【视频&图集】2021珠海航展的红鹰表演队", "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247499278&idx=1&sn=ed50b86aca103cae45fa15afca9e7739&chksm=e8dbfabadfac73ac22582caa220186034a485323914450ed340b966a6881afa6b9dc1fa7a888&scene=21"], ["【视频】2021珠海航展撤场日", "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247499045&idx=1&sn=6d2996f8b6a78673b21ee45cd2fcc08a&chksm=e8dbf991dfac7087dfbee937ee918e575c51bebef40852df54ab6c128a110cc3d69a5c7655f0&scene=21"], ["2021珠海航展离场日的流水账", "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247498855&idx=1&sn=70f147656aa808c502c75c49aeb6eb71&chksm=e8dbf8d3dfac71c57ce4b09f282f8dea8627886ff3902aa46c298647dbc81763b55dd5aebd00&scene=21"], ["【图集&视频】2021珠海航展八一飞行表演队", "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247499039&idx=1&sn=bbca241085ddf09902adbcf3bc86ad43&chksm=e8dbf9abdfac70bd2c5107a26fffd0dc92978474b5bcd0e134fce959e0388e3580b9c30280bb&scene=21"], ["【图集&视频】2021珠海航展无人机和水上飞机", "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247498975&idx=1&sn=81fe2486a1f0cef8f66e8b258f56d5a5&chksm=e8dbf86bdfac717d528074e4065380b7c88923f9ec0c83839055b2dff2a052790e601d1798b8&scene=21"], ["【图集&视频】2021珠海航展歼20飞行表演", "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247498941&idx=1&sn=f5d5489cb9d91044141513a1d99c6cdb&chksm=e8dbf809dfac711f186fd0506479399f64a097e990d75f15a6cba45c8fa189b80f5630f935e3&scene=21"], ["【图集&视频】2021珠海航展地面机动展示", "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247498911&idx=1&sn=9a975b46eea287d1a1b88dd3bbb7b729&chksm=e8dbf82bdfac713d08ea447483776541cc4516fc5994a8a5c2ad315ddbd0cf1996466513872e&scene=21"], ["珠海航展观看指南2021", "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247498801&idx=1&sn=34ceaf79b0027a863ae426b5ff34d8b1&chksm=e8dbf885dfac719351a7b2e64f01d5f2826a3679a24cc9eee75a9e6d1bf9d51a4f86bd753afd&scene=21"], ["2018珠海航展", "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247516472&idx=1&sn=01fdd8bfce19c4240c44e3349f4ad1c6&chksm=e8db858cdfac0c9afe0b904de17f4baf4e0009bb2412b06ff69723804d9a6957b8eb6dca1fe3&scene=21"], ["2016珠海航展", "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247516450&idx=1&sn=3814295af94c03761d92c51b02dc0978&chksm=e8db8596dfac0c80f2aaf9991b4d352f04fd71f6ce89d3456e24b82d4ddd646e2a0bce8db5fc&scene=21"], ["2014珠海航展", "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247516250&idx=1&sn=7c090022da9d7adac7da4e725709dabb&chksm=e8db84eedfac0df86ad0baf050edb6915db202bef783e4c90e956408360123911dd2fd849759&scene=21"], ["2012珠海航展", "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247516151&idx=1&sn=8aa55b1560d2772369d02f3b3cea0bd9&chksm=e8dbbb43dfac3255c44ec796bddbc4759649813617252c0873419cfe9f1c5d130cd5d571237b&scene=21"], ["2010珠海航展", "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247485646&idx=1&sn=50fa27f823b5707a0b23c949c746aa7c&chksm=e8d80c7adfaf856c0276851c6d971a6541e724a5a5d35d50fd1a1700147be3c2200997cbeb08&scene=21"], ["2008珠海航展", "https://mp.weixin.qq.com/s?__biz=MzIzNjM0NDc5NQ==&mid=2247485667&idx=1&sn=6e9e3b8f01fe6a95719524bb5d0294e9&chksm=e8d80c57dfaf85414e809a1478c2af21cb8c3b7afa5dafa90819b18d0b361e1cec85646fa3e9&scene=21"]];
 </script>
 </body>
 </html>
